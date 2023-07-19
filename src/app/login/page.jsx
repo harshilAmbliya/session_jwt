@@ -4,9 +4,9 @@ import React, { useState } from 'react'
 import { signIn } from 'next-auth/react';
 // import { use } from 'next/dist/server/api-utils';
 // import { redirect } from 'next/navigation';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 const LOGIN = () => {
-    // const router = useRouter();
+    const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -20,11 +20,9 @@ const LOGIN = () => {
                 email, password
             })
             // redirect("/")
-            // router.push('/')
+            router.push('/')
             console.log(data)
         } catch (error) {
-            // redirect()
-
             console.log(error)
         }
 

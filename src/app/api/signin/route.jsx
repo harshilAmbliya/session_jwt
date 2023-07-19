@@ -25,6 +25,6 @@ export const POST = async (req) => {
 
 export const GET = async () => {
 
-    const allUser = await Prisma.user.findMany();
+    const allUser = await prisma.user.findMany();
     return NextResponse.json(allUser, { status: 200 })
 }
