@@ -6,7 +6,7 @@ export const POST = async (req) => {
         const user = await req.json();
         const { name, email, password, address } = user;
         // console.log(user)
-        const usersdata = await prisma.user.create({
+        const Create = await prisma.user.create({
             data: {
                 name,
                 email,
@@ -15,7 +15,7 @@ export const POST = async (req) => {
             }
         })
 
-        return NextResponse.json({ usersdata }, { status: 200 })
+        return NextResponse.json({ Create }, { status: 200 })
     } catch (error) {
         NextResponse.json({ message: "create error .. ", error }, { status: 500 })
     }

@@ -1,9 +1,13 @@
 'use client'
 
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
 const RegistartionPage = () => {
+    const router = useRouter()
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -14,10 +18,13 @@ const RegistartionPage = () => {
         e.preventDefault();
         // Perform login logic here
         try {
-            const { data } = await axios.post('http://localhost:3000/api/adduser', {
+            const  {data,status}  = await axios.post('http://localhost:3000/api/signin', {
                 name, email, password, address
             })
             console.log(data)
+            if(status === 200) {
+                router.push("/login")
+            }
         } catch (error) {
             console.log(error)
         }
