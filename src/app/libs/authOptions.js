@@ -2,6 +2,8 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import prisma from "@/app/libs/prismadb";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { NextResponse } from "next/server";
+// import { useRouter } from 'next/router';
+
 
 export const authOptions = {
     adapter: PrismaAdapter(prisma),
@@ -34,6 +36,8 @@ export const authOptions = {
                 if (!user) {
                     throw new Error("Invalid Email Or Password !")
                 }
+
+
                 return user;
             }
         })

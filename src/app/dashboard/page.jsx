@@ -18,16 +18,19 @@ const Dashboard = () => {
    
     console.log(data)
     return (
-        <div>
-            <h1>dashboard</h1>
+        <div className='text-center'>
 
           {
             data && data.authenticated? (
-                <div>
-                    <h1>Welcome {data.session.user.name}</h1>
+                <div >
+
+                    <h1 className='text-3xl text-center py-8'>Welcome {data.session.user.name}</h1>
+                    <p>
+                      {JSON.stringify(data.session.user)}
+                    </p>
                 </div>
             ) : (
-                <div>
+                <div className='text-3xl text-center py-8'>
                     <h1>Welcome Guest</h1>
                 </div>
             )

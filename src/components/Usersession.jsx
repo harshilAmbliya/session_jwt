@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react'
 import React from 'react'
 import { signIn, signOut } from 'next-auth/react'
 // import { getServerSession } from 'next-auth'
-const Usersession = () => {
+const User = () => {
 
     const { data: session } = useSession()
     console.log(session)
@@ -18,4 +18,4 @@ const Usersession = () => {
     )
 }
 
-export default Usersession
+export default User
