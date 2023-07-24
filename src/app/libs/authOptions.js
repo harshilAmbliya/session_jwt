@@ -3,7 +3,8 @@ import prisma from "@/app/libs/prismadb";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { NextResponse } from "next/server";
 // import { useRouter } from 'next/router';
-
+// import  Jwt  from 'jsonwebtoken';
+// import { Jwt } from 'jsonwebtoken';
 
 export const authOptions = {
     adapter: PrismaAdapter(prisma),
@@ -11,7 +12,7 @@ export const authOptions = {
         strategy: 'jwt'
     },
 
-    secret: process.env.NEXT_SECRET,
+    secret: process.env.NEXTAUTH_SECRET,
     pages: {
         signIn: '/signin',
         login: '/login',
@@ -42,6 +43,16 @@ export const authOptions = {
             }
         })
     ],
+    // jwt: {
+
+    //     async encode({ secret, token }) {
+    //         return jwt.sign(token, secret)
+    //     },
+    //     async decode({ secret, token }) {
+    //         return jwt.verify(token, secret)
+    //     },
+
+    // }
     // callbacks:{
     //     async session({ token }) {
     //         // Persist the OAuth access_token and or the user id to the token right after signin
