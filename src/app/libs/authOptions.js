@@ -14,8 +14,8 @@ export const authOptions = {
 
     secret: process.env.NEXTAUTH_SECRET,
     pages: {
-        signIn: '/signin',
         login: '/login',
+        signIn: '/registration',
     },
     providers: [
         CredentialsProvider({
@@ -63,3 +63,5 @@ export const authOptions = {
     // }
 
 }
+
+console.log('OAuth', authOptions)
