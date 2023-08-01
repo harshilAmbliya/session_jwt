@@ -20,6 +20,7 @@ const LOGIN = () => {
         password,
       });
       // redirect("/")
+      console.log(data)
       if (data.ok) {
         router.push("/dashboard");
       }

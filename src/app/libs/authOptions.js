@@ -14,16 +14,16 @@ export const authOptions = {
 
     secret: process.env.NEXTAUTH_SECRET,
     pages: {
-        login: '/login',
-        signIn: '/registration',
+        signUp: '/registration',
+        signIn: '/login',
     },
     providers: [
         CredentialsProvider({
             name: "login",
             async authorize(credentials, req) {
-                const { email } = credentials;
+                const { email, password } = credentials;
 
-                if (!credentials?.email || !credentials.password) {
+                if (!email || !password) {
                     return NextResponse.json({ message: "Invalid User Or Password" }, { status: 404 })
                 }
 
@@ -38,11 +38,23 @@ export const authOptions = {
                     throw new Error("Invalid Email Or Password !")
                 }
 
+                if (password !== user.password) {
+                    console.log("password check successfully..")
+                    return NextResponse.json({
+                        message: "Invalid password witten.."
+                    }, { status: 500 }, { success: false }, { ok: false })
+                }
 
                 return user;
             }
         })
     ],
+
+
+
+
+
+
     // jwt: {
 
     //     async encode({ secret, token }) {
@@ -64,4 +76,3 @@ export const authOptions = {
 
 }
 
-console.log('OAuth', authOptions)
